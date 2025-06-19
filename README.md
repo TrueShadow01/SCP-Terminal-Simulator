@@ -17,10 +17,14 @@ Access SCP files, explore SCP entries, and interact with a retro-styled secure t
 
 ## Getting Started
 
-1. Clone or download this repository  
+1. Clone/download this repository  
 2. Ensure the `SCPFiles` directory contains your SCP `.txt` entries, named like `SCP-173.txt`  
 3. Build and run the project using Visual Studio or your preferred C++ environment  
-4. Use commands inside the terminal interface to explore SCP files  
+4. Use commands inside the terminal interface to explore SCP files
+
+## OR
+
+Get the Release Build from the Release Page
 
 ---
 
