@@ -24,7 +24,7 @@ Access SCP files, explore SCP entries, and interact with a retro-styled secure t
 
 ## OR
 
-Get the Release Build from the Release Page
+Get the Release Build from the [Release Page](https://github.com/TrueShadow01/SCP-Terminal-Simulator/releases)
 
 ---
 
