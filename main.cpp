@@ -4,6 +4,8 @@
 #include <filesystem>
 #include <unordered_map>
 #include <functional>
+#include <thread>
+#include <chrono>
 
 void login(std::string username, std::string password);
 void signUp(int option, std::string username, std::string password);
@@ -43,10 +45,18 @@ void login(std::string username, std::string password) {
 	std::cout << "USERNAME: " << username << std::endl;
 	std::cout << "PASSWORD: " << password << std::endl;
 	std::cout << "LOGGING IN........." << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::cout << "VERIFIYING........." << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(2));
 	std::cout << "SUCCESS!" << std::endl;
-	std::cout << "NOTE: ACTION LOGGED BY 'ALPHA', NO ACTION REQUIRED FROM USER." << std::endl;
-	std::cout << "2 OTHER USERS ONLINE: [REDACTED], ALPHA" << std::endl;
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
+	std::cout << "NOTE: ACTION LOGGED BY 'ALPHA'" << std::endl;
+	std::cout << "1 OTHER USER ONLINE: ALPHA [ROOT USER]" << std::endl;
 	std::cout << "WELCOME DR. BRIGHT, YOUR LAST LOGIN WAS 98723 DAYS AGO.\nYOU HAVE 5 UNREAD MESSAGES.\nYOUR CURRENT CLEARANCE LEVEL IS 4+/*//#\n[MESSAGE TERMINATED DUE TO CORRUPTED BITS! CONTINUING EXECUTION]" << std::endl;
 	terminal();
 }
@@ -58,12 +68,17 @@ void signUp(int option, std::string username, std::string password) {
 	std::cout << "/#/*//USERNAME/(&%$$%§$&" << std::endl;
 	std::cout << "ATTEMPTING REBOOT OF SIGNUP PROGRAM..." << std::endl;
 	std::cout << "REBOOTING SIGNUP.EXE...." << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(3));
 	std::cout << "ERROR: SIGNUP.EXE MEMORY VIOLATION, UNABLE TO LOAD!" << std::endl;
 	std::cout << "INCIDENT REPORTED TO 'ALPHA' FOR FUTHER INVESTIGATION.\nIF YOU ARE A [DATA EXPUNGED] PLEASE REPORT TO [REDACTED] FOR FUTHER ACTIONS." << std::endl;
 	std::cout << "EXITING TO MENU!" << std::endl;
 	std::cout << "-------------------------------------------" << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(5));
+#ifdef _WIN32
+	system("cls");
+#else
+	system("clear");
+#endif
 	menu(option, username, password);
 }
 
@@ -75,6 +90,7 @@ void terminal() {
 		std::cout << "list_scps | LIST ALL AVAILABLE SCP FILES IN THE SYSTEM" << std::endl;
 		std::cout << "access_scp_[SCP NUMBER] | ACCESS THE SCP FILE CORESPONDING TO THE PROVIDED SCP NUMBER. ID MUST BE PRESENT IN THE SYSTEM TO BE ABLE TO BE ACCESSED" << std::endl;
 		std::cout << "whoami | PRINTS CURRENT USER WITH SOME OTHER INFORMATION" << std::endl;
+		std::cout << "clear | CLEARS THE TERMINAL WINDOW" << std::endl;
 	};
 
 	commands["list_scps"] = []() {
@@ -83,6 +99,14 @@ void terminal() {
 
 	commands["whoami"] = []() {
 		std::cout << "Dr. Bright | Clearance Level: [CORRUPTED BIT DETECTED] | Status: ALIVE, OBSERVING" << std::endl;
+	};
+
+	commands["clear"] = []() {
+#ifdef _WIN32
+		system("cls");
+#else
+		system("clear");
+#endif
 	};
 
 	commands["exit"] = []() {
@@ -108,7 +132,7 @@ void terminal() {
 		}
 		else {
 			std::cout << "UNKNOWN COMMAND!" << std::endl;
-			std::cout << "INCIDENT WILL BE REPORTED TO 'ALPHA' FOR FUTHER INVESTIGATION!" << std::endl;
+			std::cout << "ACTION LOGGED." << std::endl;
 		}
 	}
 }
